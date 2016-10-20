@@ -1,7 +1,12 @@
-import init from './list-eleve.js';
-import Student from './eleve-class.js';
+import {list_stu} from './list-eleve';
+import Student from './eleve-class';
 
-let list_students = [
+let info_eleve = {
+
+	init: function(){
+
+		// ajout élèves
+		let students = [
 					new Student('Joël','ALVES CANTEIRO','img/Joel.jpg'),
 					new Student('Mattieu','VENDEVILLE','img/Mattieu.jpg'),
 					new Student('Clément','TEBOUL','img/clementt.jpg'),
@@ -13,7 +18,12 @@ let list_students = [
 					new Student('Axel','COQUIN','img/axel.jpg'),
 					new Student('Félix','NAHON','img/felix.jpg'),
 					new Student('Julien','GASTINEAU','img/julien.jpg'),
-					new Student('CLément','DUSSOL','img/clementd.jpg')
+					new Student('Clément','DUSSOL','img/clementd.jpg')
 
 				];
-init(list_students);
+
+	list_stu.init(students);
+	}
+}
+
+info_eleve.init()

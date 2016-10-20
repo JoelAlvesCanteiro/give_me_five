@@ -1,17 +1,28 @@
 import $ from "jquery";
 
-export default function init(list_students){
-	
-		this.list_students = list_students;		
-		
+let list_stu = {
+
+	students : [],
+
+	init: function(students){
+		this.students = students;
 		let $students = $('#students'),
 			$one 	= $students.children('li').detach();
 
-		for(let j=0; j<list_students.length; j++){
+		for(let j=0; j<students.length; j++){
 
 			let li 		= $one.clone(),
-				students 	= this.list_students[j];
+				student = this.students[j];
 
-			$list_students.append(li);
-	}
+			student.id 	= j;
+			li.attr("id","eleve"+j);
+			console.log(student.first_name);
+	
+			$students.append(li); 
+			$("#eleve"+j+" .stu").append(student.first_name+" "+student.name);
+		}
+
+	},
+	
 }
+export {list_stu}

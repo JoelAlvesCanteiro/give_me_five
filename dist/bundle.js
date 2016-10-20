@@ -48,16 +48,24 @@
 
 	var _listEleve = __webpack_require__(1);
 
-	var _listEleve2 = _interopRequireDefault(_listEleve);
-
 	var _eleveClass = __webpack_require__(3);
 
 	var _eleveClass2 = _interopRequireDefault(_eleveClass);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var list_students = [new _eleveClass2.default('Joël', 'ALVES CANTEIRO', 'img/Joel.jpg'), new _eleveClass2.default('Mattieu', 'VENDEVILLE', 'img/Mattieu.jpg'), new _eleveClass2.default('Clément', 'TEBOUL', 'img/clementt.jpg'), new _eleveClass2.default('Victor', 'MOUTTON', 'img/victor.jpg'), new _eleveClass2.default('Bastien', 'LHUAIRE', 'img/bastien.jpg'), new _eleveClass2.default('Loan', 'CAMPAN', 'img/loan.jpg'), new _eleveClass2.default('Stan', 'XIONG', 'img/stan.jpg'), new _eleveClass2.default('Pierre', 'SAIGOT', 'img/pierre.jpg'), new _eleveClass2.default('Axel', 'COQUIN', 'img/axel.jpg'), new _eleveClass2.default('Félix', 'NAHON', 'img/felix.jpg'), new _eleveClass2.default('Julien', 'GASTINEAU', 'img/julien.jpg'), new _eleveClass2.default('CLément', 'DUSSOL', 'img/clementd.jpg')];
-	(0, _listEleve2.default)(list_students);
+	var info_eleve = {
+
+		init: function init() {
+
+			// ajout élèves
+			var students = [new _eleveClass2.default('Joël', 'ALVES CANTEIRO', 'img/Joel.jpg'), new _eleveClass2.default('Mattieu', 'VENDEVILLE', 'img/Mattieu.jpg'), new _eleveClass2.default('Clément', 'TEBOUL', 'img/clementt.jpg'), new _eleveClass2.default('Victor', 'MOUTTON', 'img/victor.jpg'), new _eleveClass2.default('Bastien', 'LHUAIRE', 'img/bastien.jpg'), new _eleveClass2.default('Loan', 'CAMPAN', 'img/loan.jpg'), new _eleveClass2.default('Stan', 'XIONG', 'img/stan.jpg'), new _eleveClass2.default('Pierre', 'SAIGOT', 'img/pierre.jpg'), new _eleveClass2.default('Axel', 'COQUIN', 'img/axel.jpg'), new _eleveClass2.default('Félix', 'NAHON', 'img/felix.jpg'), new _eleveClass2.default('Julien', 'GASTINEAU', 'img/julien.jpg'), new _eleveClass2.default('Clément', 'DUSSOL', 'img/clementd.jpg')];
+
+			_listEleve.list_stu.init(students);
+		}
+	};
+
+	info_eleve.init();
 
 /***/ },
 /* 1 */
@@ -68,7 +76,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.default = init;
+	exports.list_stu = undefined;
 
 	var _jquery = __webpack_require__(2);
 
@@ -76,21 +84,31 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function init(list_students) {
+	var list_stu = {
 
-		this.list_students = list_students;
+		students: [],
 
-		var $students = (0, _jquery2.default)('#students'),
-		    $one = $students.children('li').detach();
+		init: function init(students) {
+			this.students = students;
+			var $students = (0, _jquery2.default)('#students'),
+			    $one = $students.children('li').detach();
 
-		for (var j = 0; j < list_students.length; j++) {
+			for (var j = 0; j < students.length; j++) {
 
-			var li = $one.clone(),
-			    students = this.list_students[j];
+				var li = $one.clone(),
+				    student = this.students[j];
 
-			$list_students.append(li);
+				student.id = j;
+				li.attr("id", "eleve" + j);
+				console.log(student.first_name);
+
+				$students.append(li);
+				(0, _jquery2.default)("#eleve" + j + " .stu").append(student.first_name + " " + student.name);
+			}
 		}
-	}
+
+	};
+	exports.list_stu = list_stu;
 
 /***/ },
 /* 2 */
@@ -10330,13 +10348,12 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Student = function Student(first_name, name, picture, mail, points) {
+	var Student = function Student(first_name, name, picture) {
 		_classCallCheck(this, Student);
 
 		this.first_name = first_name;
 		this.name = name;
 		this.picture = picture;
-		this.mail = mail;
 		this.points = 0;
 	};
 
