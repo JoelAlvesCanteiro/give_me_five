@@ -1,4 +1,78 @@
 
-.border{
-	border: 1px solid black;
+@import url('https://fonts.googleapis.com/css?family=Amaranth');
+
+body{
+	font-family: 'Amaranth', sans-serif;
+	background-image: url(../img/img-de-fond.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: black;
+}
+h3,ul{
+	padding-bottom: 20px;
+}
+
+.header{
+	padding-bottom: 50px;
+}
+.btn{
+	color: #DEDAB6;
+	background-color: #1C1F19;
+	border: 2px solid #1C1F19;
+	border-radius: 5px;
+	padding: 10px;
+	font-weight: bold;
+	transition: all 1s ease;
+}
+.btn:hover{
+	color:#1C1F19;
+	background-color:#DEDAB6;
+	border: 2px solid #DEDAB6;
+	font-weight: bold;
+}
+.first{
+	border: 1px solid #1C1F19;
+	background-color: #1C1F19;
+	color:#DEDAB6;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.element{
+	padding-top: 20px;
+}
+.element p{
+	padding-top: 10px;
+}
+p{
+	font-size: 20px;
+}
+.card{
+	padding-bottom: 20px;
+}
+.list{
+	border: 1px solid #DEDAB6;
+	background-color: #DEDAB6;
+	color:black;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.stu{
+	color: #1C1F19;
+	transition: all 1s ease;
+	font-size: 17px;
+
+}
+.stu:hover{
+	text-decoration: none;
+	color: #DEDAB6;
+}
+.list a{
+	font-weight: bold;
+}
+.element2{
+	padding-top: 50px;
+}
+textarea{
+	border-radius: 5px;
+}
+img{
+	border-radius: 5px;
 }
