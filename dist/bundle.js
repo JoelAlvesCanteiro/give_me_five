@@ -48,7 +48,9 @@
 
 	var _listEleve = __webpack_require__(1);
 
-	var _eleveClass = __webpack_require__(3);
+	var _drawEleve = __webpack_require__(3);
+
+	var _eleveClass = __webpack_require__(4);
 
 	var _eleveClass2 = _interopRequireDefault(_eleveClass);
 
@@ -61,7 +63,7 @@
 			// ajout élèves
 			var students = [new _eleveClass2.default('Joël', 'ALVES CANTEIRO', 'img/Joel.jpg'), new _eleveClass2.default('Mattieu', 'VENDEVILLE', 'img/Mattieu.jpg'), new _eleveClass2.default('Clément', 'TEBOUL', 'img/clementt.jpg'), new _eleveClass2.default('Victor', 'MOUTTON', 'img/victor.jpg'), new _eleveClass2.default('Bastien', 'LHUAIRE', 'img/bastien.jpg'), new _eleveClass2.default('Loan', 'CAMPAN', 'img/loan.jpg'), new _eleveClass2.default('Stan', 'XIONG', 'img/stan.jpg'), new _eleveClass2.default('Pierre', 'SAIGOT', 'img/pierre.jpg'), new _eleveClass2.default('Axel', 'COQUIN', 'img/axel.jpg'), new _eleveClass2.default('Félix', 'NAHON', 'img/felix.jpg'), new _eleveClass2.default('Julien', 'GASTINEAU', 'img/julien.jpg'), new _eleveClass2.default('Clément', 'DUSSOL', 'img/clementd.jpg')];
 
-			_listEleve.list_stu.init(students);
+			_listEleve.list_stu.init(students, _drawEleve.draw_eleve);
 		}
 	};
 
@@ -87,8 +89,19 @@
 	var list_stu = {
 
 		students: [],
+		selected: null,
 
-		init: function init(students) {
+		get_selected: function get_selected() {
+			return this.selected;
+		},
+
+		select_student: function select_student(student) {
+
+			this.selected = student;
+			(0, _jquery2.default)('#students li').removeClass('selected').eq(student.id).addClass('selected');
+		},
+
+		init: function init(students, draw_eleve) {
 			this.students = students;
 			var $students = (0, _jquery2.default)('#students'),
 			    $one = $students.children('li').detach();
@@ -100,11 +113,25 @@
 
 				student.id = j;
 				li.attr("id", "eleve" + j);
-				console.log(student.first_name);
 
 				$students.append(li);
 				(0, _jquery2.default)("#eleve" + j + " .stu").append(student.first_name + " " + student.name);
 			}
+
+			// couleur par defaut
+
+			this.select_student(this.students[0]);
+
+			// gestion des click
+
+			var self = this;
+
+			(0, _jquery2.default)('#students').on('click', 'a', function () {
+
+				var index = (0, _jquery2.default)("#students a").index(this);
+				self.select_student(self.students[index]);
+				draw_eleve.draw();
+			});
 		}
 
 	};
@@ -10338,6 +10365,45 @@
 
 /***/ },
 /* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.draw_eleve = undefined;
+
+	var _jquery = __webpack_require__(2);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _listEleve = __webpack_require__(1);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var draw_eleve = {
+	  div_clone: (0, _jquery2.default)("#draw_area .row").detach(),
+	  draw: function draw() {
+	    var student = _listEleve.list_stu.get_selected(),
+	        $display = this.div_clone;
+
+	    if (student != null) {
+	      (0, _jquery2.default)("#draw_area").empty();
+	      //  création de la représentation de la partie affichage
+	      var div = $display.clone();
+	      (0, _jquery2.default)('#draw_area').append(div);
+	      //changement de l'image
+	      (0, _jquery2.default)(".image_profile").attr("src", student.picture);
+	      //changement du nom
+	      (0, _jquery2.default)("#draw_area .nom").html(student.first_name + " " + student.name + " Score : 0");
+	    }
+	  }
+	};
+	exports.draw_eleve = draw_eleve;
+
+/***/ },
+/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";

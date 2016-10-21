@@ -1,4 +1,5 @@
 import {list_stu} from './list-eleve';
+import {draw_eleve} from './draw-eleve';
 import Student from './eleve-class';
 
 let info_eleve = {
@@ -22,7 +23,7 @@ let info_eleve = {
 
 				];
 
-	list_stu.init(students);
+	list_stu.init(students,draw_eleve);
 	}
 }
 

@@ -67,6 +67,12 @@ p{
 .list a{
 	font-weight: bold;
 }
+.list label{
+	padding-left: 40px;
+}
+li{
+	padding-bottom: 20px;
+}
 .element2{
 	padding-top: 50px;
 }
