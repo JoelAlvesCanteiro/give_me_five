@@ -4,7 +4,7 @@ export default class Student{
 		this.name       = name;
 		this.picture 	= picture;
 		this.points  	= points;
-		this.stats		= "absent";
+		this.stats		= this.value;
 	}
 
 }

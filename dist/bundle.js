@@ -139,14 +139,14 @@
 			(0, _jquery2.default)('#students').on('click', 'input', function () {
 				console.log(this.value);
 				console.log((0, _jquery2.default)(this).parent().find('li'));
-				if ((0, _jquery2.default)('input[value=present]').is(':checked')) {
-					alert("Elève présent");
-				} else if ((0, _jquery2.default)('input[value=retard]').is(':checked')) {
-					alert("Eleve en retard");
-				} else if ((0, _jquery2.default)('input[value=absent]').is(':checked')) {
-					alert("Eleve absent");
-				};
 			});
+			if (this.value = "present") {
+				this.points = +10;
+			} else if (this.value = "retard") {
+				this.points = -2;
+			} else {
+				this.points = -10;
+			};
 		}
 	};
 	exports.list_stu = list_stu;
@@ -10435,7 +10435,7 @@
 		this.name = name;
 		this.picture = picture;
 		this.points = points;
-		this.stats = "absent";
+		this.stats = this.value;
 	};
 
 	exports.default = Student;

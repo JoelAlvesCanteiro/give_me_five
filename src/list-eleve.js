@@ -55,14 +55,15 @@ let list_stu = {
 		$('#students').on('click', 'input', function(){
 		 	console.log(this.value)
 		 	console.log($(this).parent().find('li'));
-		 	if( $('input[value=present]').is(':checked') ){
-    			alert("Elève présent");
-			} else if( $('input[value=retard]').is(':checked') ){
-    			alert("Eleve en retard");
-			}else if( $('input[value=absent]').is(':checked') ){
-				alert("Eleve absent");
-			};	
+		 	
 		});
+		if (this.value = "present") {
+			this.points = +10
+		}else if (this.value = "retard"){
+			this.points = -2
+		}else{
+			this.points = -10
+		};
 	}
 }
 export {list_stu}
