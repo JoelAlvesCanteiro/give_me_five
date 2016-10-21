@@ -15,7 +15,7 @@ let draw_eleve = {
             //changement de l'image
             $(".image_profile").attr("src",student.picture);
             //changement du nom
-            $("#draw_area .nom").html(student.first_name+" "+student.name+" Score : 0");
+            $("#draw_area .nom").html(student.first_name+" "+student.name+" Score : "+student.points);
 		}
 	}
 }

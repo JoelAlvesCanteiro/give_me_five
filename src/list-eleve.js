@@ -29,21 +29,19 @@ let list_stu = {
 
 			student.id 	= j;
 			li.attr("id","eleve"+j);
-			
+
 			//changement de nom pour chaque input
 			$(li).find('input').attr('name', 'checkbox' + j);
 
 			$students.append(li); 
 			$("#eleve"+j+" .stu").append(student.first_name+" "+student.name);
 		}
-
-		// couleur par defaut
 		
 		this.select_student(this.students[0]);
 
-		// gestion des click
+		// gestion du clic
 		
-		var self = this;
+		let self = this;
 
 		$('#students').on('click', 'a', function(){
 
@@ -51,9 +49,20 @@ let list_stu = {
 			self.select_student(self.students[index]);	
 			draw_eleve.draw()
 		});
-	},
 
-
+		// Checker les inputs
 	
+		$('#students').on('click', 'input', function(){
+		 	console.log(this.value)
+		 	console.log($(this).parent().find('li'));
+		 	if( $('input[value=present]').is(':checked') ){
+    			alert("Elève présent");
+			} else if( $('input[value=retard]').is(':checked') ){
+    			alert("Eleve en retard");
+			}else if( $('input[value=absent]').is(':checked') ){
+				alert("Eleve absent");
+			};	
+		});
+	}
 }
 export {list_stu}

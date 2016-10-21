@@ -121,11 +121,9 @@
 				(0, _jquery2.default)("#eleve" + j + " .stu").append(student.first_name + " " + student.name);
 			}
 
-			// couleur par defaut
-
 			this.select_student(this.students[0]);
 
-			// gestion des click
+			// gestion du clic
 
 			var self = this;
 
@@ -135,8 +133,21 @@
 				self.select_student(self.students[index]);
 				draw_eleve.draw();
 			});
-		}
 
+			// Checker les inputs
+
+			(0, _jquery2.default)('#students').on('click', 'input', function () {
+				console.log(this.value);
+				console.log((0, _jquery2.default)(this).parent().find('li'));
+				if ((0, _jquery2.default)('input[value=present]').is(':checked')) {
+					alert("Elève présent");
+				} else if ((0, _jquery2.default)('input[value=retard]').is(':checked')) {
+					alert("Eleve en retard");
+				} else if ((0, _jquery2.default)('input[value=absent]').is(':checked')) {
+					alert("Eleve absent");
+				};
+			});
+		}
 	};
 	exports.list_stu = list_stu;
 
@@ -10399,7 +10410,7 @@
 	      //changement de l'image
 	      (0, _jquery2.default)(".image_profile").attr("src", student.picture);
 	      //changement du nom
-	      (0, _jquery2.default)("#draw_area .nom").html(student.first_name + " " + student.name + " Score : 0");
+	      (0, _jquery2.default)("#draw_area .nom").html(student.first_name + " " + student.name + " Score : " + student.points);
 	    }
 	  }
 	};
@@ -10417,13 +10428,14 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Student = function Student(first_name, name, picture) {
+	var Student = function Student(first_name, name, picture, points) {
 		_classCallCheck(this, Student);
 
 		this.first_name = first_name;
 		this.name = name;
 		this.picture = picture;
-		this.points = 0;
+		this.points = points;
+		this.stats = "absent";
 	};
 
 	exports.default = Student;
