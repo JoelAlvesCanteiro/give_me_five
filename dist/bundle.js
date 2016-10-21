@@ -114,6 +114,9 @@
 				student.id = j;
 				li.attr("id", "eleve" + j);
 
+				//changement de nom pour chaque input
+				(0, _jquery2.default)(li).find('input').attr('name', 'checkbox' + j);
+
 				$students.append(li);
 				(0, _jquery2.default)("#eleve" + j + " .stu").append(student.first_name + " " + student.name);
 			}
